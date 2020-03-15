@@ -1,0 +1,62 @@
+#include <iostream>
+using namespace std ;
+struct queue {
+    int front , rear ;
+    int arr[20];
+};
+// for checking empty
+int isEmpty (queue * q) {
+    if( q->rear==q->front )
+        return 1;
+    else 
+        return 0;
+}
+// for checking full
+int isFull (queue * q) {
+    if (q->rear==19)
+        return 1;
+    else 
+        return 0;
+}
+// for inserting 
+int enqueue ( queue * q, int data ) {
+    if (isFull(q))
+		return 1;
+	if (isEmpty(q))
+		q->front = 0;
+	q->arr[++q->rear] = data;
+	return 0;
+}
+// for dequeue
+int dequeue ( queue * q, int *data ) {
+	if ( isEmpty(q) ) 
+		return 0;
+	*data = q->arr[q->rear --] ;
+	if ( q->rear == q->front )			// in case of only one data
+		q->front = q->rear = -1 ;
+	
+	return 0;
+} 
+// for traversing
+void traverse ( queue * q) {
+	queue temp = q->front ;
+	int i=1;
+	while ( temp ) {
+		cout<<i<<" "<< q->arr[q->front] <<endl;
+		temp = f->front ;
+		q->front ++ ; 
+		i ++ ;
+	}
+}
+// main function
+int main () {
+	queue * q ;
+	for ( int i=0, d=10; i<10 ; i++, d +=10 ) {
+		enqueue (q, d) ;
+	}
+	traverse (q);
+	dequeue (q, 10)
+	traverse (q);
+	
+	return 0;
+}
